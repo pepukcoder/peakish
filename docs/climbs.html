@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peakish</title>
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/climbs.css">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
+</head>
+<body>
+  <div id="pageLoader">
+    <img src="assets/icons/logo.svg" alt="Logo" class="loader-logo">
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+  <div id="pageContent">
+    <!-- navbar -->
+    <header>
+      <div class="header-inner">
+        <div class="brand">
+          <a href="index.html" class="logo">
+            <img src="assets/icons/logo.svg" alt="logo" class="logo-img">
+          </a>
+          <span class="site-title">Peakish</span>
+        </div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">Главная</a>
+          <a href="mountains.html">Вершины</a>
+          <a href="gear.html">Снаряжение</a>
+          <a href="climbs.html" class="active">Восхождения</a>
+        </nav>
+      </div>
+    </header>
+    
+    <div style="min-height: 100vh;">
+      <!-- New Climb Button -->
+      <div class="add-btn-wrap">
+        <button class="btn-add-climb" id="newClimbBtn">
+          <img src="assets/icons/plus.svg" alt="" class="add-icon">
+          Добавить восхождение
+        </button>
+      </div>
+      <!-- Climb Cards Grid -->
+      <div class="climbs-grid" id="climbsGrid">
+        <!-- Cards will be injected by JS -->
+      </div>
+    </div>
+
+    <!-- climb detail modal -->
+    <div id="climbModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <!-- image -->
+        <div class="modal-image-wrap">
+          <img id="modalPic" src="" alt="Climb Image" class="modal-image">
+        </div>
+        <!-- details -->
+        <div class="modal-details">
+          <h2 id="modalName" class="modal-title"></h2>
+          <div class="modal-info">
+            <p>
+              <img src="assets/icons/calendar.svg" class="modal-icon"/>
+              <strong>Дата:</strong> <span id="modalDate"></span>
+            </p>
+            <p>
+              <img src="assets/icons/mountain.svg" class="modal-icon"/>
+              <strong>Высота:</strong> <span id="modalHeight"></span> м
+            </p>
+            <p>
+              <img src="assets/icons/location.svg" class="modal-icon"/>
+              <strong>Локация:</strong> <span id="modalLocation"></span>
+            </p>
+            <p>
+              <img src="assets/icons/milestone.svg" class="modal-icon"/>
+              <strong>Сложность:</strong> <span id="modalDifficulty"></span>
+            </p>
+            <p>
+              <img src="assets/icons/footprints.svg" class="modal-icon"/>
+              <strong>Дистанция:</strong> <span id="modalDistance"></span> км
+            </p>
+            <p>
+              <img src="assets/icons/people.svg" class="modal-icon"/>
+              <strong>Количество участников:</strong> <span id="modalPeople"></span>
+            </p>
+            <div id="modalNotesGroup" class="modal-notes-group">
+              <div class="modal-notes-head">
+                <img src="assets/icons/note.svg" class="modal-notes-icon"/>
+                <strong>Заметки</strong>
+              </div>
+              <div id="modalNotes" class="modal-notes-box"></div>
+            </div>
+          </div>
+          <div class="modal-buttons">
+            <button class="edit-btn">Редактировать</button>
+            <button class="delete-btn">Удалить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Add/Edit Climb Modal -->
+    <div id="formModal" class="modal">
+      <div class="modal-content form-modal">
+        <span class="modal-close" id="formModalClose">&times;</span>
+        <h2 id="formTitle">Новое восхождение</h2>
+
+        <form id="climbForm" class="climb-form">
+          <div class="form-group">
+            <label>Название</label>
+            <input type="text" id="formName" required>
+          </div>
+
+          <div class="form-group">
+            <label>Изображение</label>
+            <input type="file" id="formPicture" accept="image/*">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Высота (м)</label>
+              <input type="text" id="formHeight" inputmode="numeric" pattern="\d*" required>
+            </div>
+            <div class="form-group">
+              <label>Дата</label>
+              <input type="date" id="formDate" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Локация</label>
+              <input type="text" id="formLocation">
+            </div>
+            <div class="form-group">
+              <label>Сложность</label>
+              <select id="formDifficulty">
+                <option value="Легкая">Легкая</option>
+                <option value="Умеренная">Умеренная</option>
+                <option value="Сложная">Сложная</option>
+                <option value="Экстремальная">Экстремальная</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Дистанция (км)</label>
+              <input type="text" id="formDistance" inputmode="numeric" pattern="\d*">
+            </div>
+            <div class="form-group">
+              <label>Количество участников</label>
+              <input type="text" id="formPeople" inputmode="numeric" pattern="\d*">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Заметки</label>
+            <textarea id="formNotes" rows="4"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="save-btn">Сохранить</button>
+            <button type="button" class="cancel-btn" id="cancelFormBtn">Отмена</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <!-- about section -->
+          <div class="footer-about">
+            <img src="assets/icons/logo.svg" alt="Peakish logo" class="footer-logo">
+            <p class="footer-desc">Peakish помогает альпинистам находить маршруты, руководства по снаряжению и записывать восхождения. Создан для исследователей, которые ценят свое хобби.</p>
+          </div>
+
+          <!-- navigation section -->
+          <div class="footer-links">
+            <h4>Исследуйте</h4>
+            <ul>
+              <li><a href="index.html">Главная страница</a></li>
+              <li><a href="mountains.html">Вершины</a></li>
+              <li><a href="gear.html">Снаряжение</a></li>
+              <li><a href="climbs.html">Мои восхождения</a></li>
+            </ul>
+          </div>
+
+          <!-- contacts section -->
+          <div class="footer-contact">
+            <h4>Контакты</h4>
+            <ul>
+              <li><img src="assets/icons/location.svg" alt="location" class="icon"> 666 Metalcore Way, Deathmetal City</li>
+              <li><img src="assets/icons/gmail.svg" alt="email" class="icon"> <a href="mailto:vladikapanas@gmail.com">vladikapanas@gmail.com</a></li>
+              <li><img src="assets/icons/phone.svg" alt="brand" class="icon"> <a href="tel:+188005553535">+1 8(800) 555-3535</a></li>
+            </ul>
+          </div>
+
+          <!-- socials section -->
+          <div class="footer-social">
+            <h4>Соцсети</h4>
+            <div class="social-icons">
+              <a href="https://t.me/pepukcoder"><img src="assets/icons/telegram.svg" alt="telegram" class="social-icon"></a>
+              <a href="https://instagram.com/nofc.pepukcoder"><img src="assets/icons/insta.svg" alt="instagram" class="social-icon"></a>
+              <a href="https://github.com/pepukcoder"><img src="assets/icons/github.svg" alt="github" class="social-icon"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/climbs.js"></script>
+  <div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+body {
+  margin: 0;
+  font-family: 'Geologica', sans-serif;
+  color: #fff;
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('../assets/images/background4.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+header {
+  position: relative;
+}
+
+.mountains-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  color: #fff;
+}
+
+.mountains-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.mountains-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.mountain-card {
+  display: flex;
+  overflow: hidden;
+  border-radius: 20px;
+  margin: 40px auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  background: rgba(7,7,7,0.5);
+  backdrop-filter: blur(16px);
+  height: 450px;
+  width: 100%;
+}
+
+.card-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.mountain-image {
+  flex: 1;
+  background-size:cover;
+  background-position: center;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+.mountain-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mountain-info {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  padding: 40px;
+  color: #fff;
+  z-index: 1;
+}
+
+.mountain-info h3,
+.mountain-info p,
+.mountain-info li {
+  position: relative;
+  z-index: 1;
+}
+
+.mountain-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.mountain-info p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.mountain-data {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.mountain-data li {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  font-size: 1rem;
+  opacity: 0.85;
+  filter: brightness(0) invert(1)
+}
+
+@media (max-width: 768px) {
+  .mountains-section {
+    padding: 60px 16px;
+  }
+
+  .mountain-card {
+    flex-direction: column;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .mountain-image {
+    width: 100%;
+    min-height: 220px;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
+  }
+
+  .mountain-info {
+    padding: 22px 18px 20px;
+  }
+
+  .mountain-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .mountain-info p {
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  .mountain-data {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .mountain-data li {
+    font-size: 0.9rem;
+  }
+}

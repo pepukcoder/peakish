@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peakish</title>
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/gear.css">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
+</head>
+<body>
+  <div id="pageLoader">
+    <img src="assets/icons/logo.svg" alt="Logo" class="loader-logo">
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+  <div id="pageContent">
+    <header>
+      <div class="header-inner">
+        <div class="brand">
+          <a href="index.html" class="logo">
+            <img src="assets/icons/logo.svg" alt="logo" class="logo-img">
+          </a>
+          <span class="site-title">Peakish</span>
+        </div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">Главная</a>
+          <a href="mountains.html">Вершины</a>
+          <a href="gear.html" class="active">Снаряжение</a>
+          <a href="climbs.html">Восхождения</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="gear-wiki">
+      <aside class="wiki-nav" id="wikiNav" aria-label="Навигация по статьям"></aside>
+      <section class="wiki-viewer" id="wikiViewer">
+        <button type="button" class="wiki-back-btn" id="wikiBackBtn">Назад к списку</button>
+        <iframe
+          id="wikiFrame"
+          class="wiki-frame"
+          title="Статья по снаряжению"
+          src="about:blank"
+          loading="lazy"
+        ></iframe>
+      </section>
+    </main>
+  </div>
+  <script src="js/main.js"></script>
+  <script src="js/articles.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

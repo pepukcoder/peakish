@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  font-family: 'Geologica', sans-serif;
+  color: #fff;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url('../assets/images/background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+header {
+  position: relative;
+  flex-shrink: 0;
+}
+
+#pageContent {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.gear-wiki {
+  width: 100%;
+  max-width: none;
+  margin: 12px 0 0;
+  padding: 0 16px 16px;
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 14px;
+  min-height: 0;
+  flex: 1 1 auto;
+  align-items: stretch;
+}
+
+.wiki-nav {
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(7, 7, 7, 0.65);
+  backdrop-filter: blur(16px);
+}
+
+.wiki-group + .wiki-group {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.wiki-group-title {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.78);
+}
+
+.wiki-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.wiki-item {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.wiki-item:hover {
+  border-color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.1);
+}
+
+.wiki-item.active {
+  border-color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.16);
+}
+
+.wiki-viewer {
+  background: rgba(7,7,7,0.52);
+  border-radius: 18px;
+  backdrop-filter: blur(16px);
+  padding: 14px;
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  min-width: 0;
+}
+
+.wiki-back-btn {
+  display: none;
+  width: fit-content;
+  border: 1px solid rgba(255,255,255,0.34);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.wiki-frame {
+  width: 100%;
+  min-height: 0;
+  height: 100%;
+  flex: 1 1 auto;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+}
+
+@media (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
+
+  #pageContent {
+    height: auto;
+    overflow: visible;
+  }
+
+  .gear-wiki {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    margin: 12px 0 20px;
+    padding: 0 10px 12px;
+  }
+
+  .wiki-nav {
+    max-height: none;
+  }
+
+  .wiki-viewer {
+    display: none;
+    min-height: 70vh;
+  }
+
+  .gear-wiki.mobile-article-open .wiki-nav {
+    display: none;
+  }
+
+  .gear-wiki.mobile-article-open .wiki-viewer {
+    display: flex;
+  }
+
+  .wiki-back-btn {
+    display: inline-flex;
+  }
+
+  .wiki-frame {
+    min-height: calc(100vh - 220px);
+  }
+}
