@@ -190,8 +190,9 @@ header {
 @media (max-width:768px) {
     header {
         position: relative;
-        padding: 10px 0 0;
-        background: #0D0D0D;
+        padding: 10px 10px 8px;
+        background: linear-gradient(150deg, rgba(7,7,7,0.72), rgba(7,7,7,0.44));
+        backdrop-filter: blur(12px);
     }
 
     .header-inner {
@@ -209,8 +210,8 @@ header {
         width: 100%;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        gap: 8px;
+        padding: 8px 0 0;
     }
 
     .main-nav a {
@@ -218,18 +219,27 @@ header {
         text-align: center;
         padding: 12px 6px;
         font-size: 0.72rem;
-        border-right: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .main-nav a:last-child {
-        border-right: 0;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background:
+          linear-gradient(120deg, rgba(255,255,255,0.24), rgba(255,255,255,0.08)) left / 0% 100% no-repeat,
+          linear-gradient(120deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)) left / 100% 100% no-repeat;
+        transition: background-size 240ms cubic-bezier(.2,.9,.3,1), border-color 220ms ease;
     }
 
     .main-nav a::after {
-        left: 10px;
-        right: 10px;
-        bottom: 6px;
-        height: 2px;
+        display: none;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus {
+        background-size: 100% 100%, 100% 100%;
+        border-color: rgba(255,255,255,0.34);
+    }
+
+    .main-nav a.active {
+        background-size: 100% 100%, 100% 100%;
+        border-color: rgba(255,255,255,0.44);
     }
 }
 
