@@ -20,10 +20,16 @@
   cursor: default !important;
 }
 
+html,
+body {
+  min-height: 100%;
+  background-color: #070707;
+}
+
 body {
   font-family: 'Geologica', sans-serif;
   color: #0D0D0D;
-  background-color: #fff;
+  background-color: #070707;
   overflow-x: hidden;
 }
 
@@ -194,12 +200,16 @@ header {
         padding: 10px 10px 8px;
         background: linear-gradient(150deg, rgba(7,7,7,0.72), rgba(7,7,7,0.44));
         backdrop-filter: blur(12px);
+        overflow-x: clip;
     }
 
     .header-inner {
+        width: 100%;
+        max-width: 100%;
         padding: 0;
         flex-direction: column;
         align-items: stretch;
+        overflow-x: clip;
     }
 
     .brand {
@@ -215,6 +225,7 @@ header {
         gap: 8px;
         padding: 8px 0 0;
         min-width: 0;
+        box-sizing: border-box;
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
@@ -228,6 +239,7 @@ header {
 
     .main-nav a {
         flex: 0 0 auto;
+        max-width: 75vw;
         margin-left: 0;
         min-width: 0;
         text-align: center;
